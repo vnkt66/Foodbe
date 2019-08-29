@@ -73,8 +73,9 @@ class CustomerConfirmation extends Component {
     </div>
   </div>
 </nav>
-           <div style={{marginTop: '80px'}}>
+           <div style={{margin: '80px 40px'}}>
            <Grid>
+            {/* <Grid.Column></Grid.Column> */}
             <Grid.Column width={14}>
            <form className="form-horizontal">
            <div className="form-group">
@@ -90,6 +91,7 @@ class CustomerConfirmation extends Component {
            </div>
            </form>
            </Grid.Column>
+           {/* <Grid.Column></Grid.Column> */}
            </Grid>
           </div>
           </div>

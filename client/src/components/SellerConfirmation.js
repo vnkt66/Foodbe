@@ -73,7 +73,7 @@ class SellerConfirmation extends Component {
     </div>
   </div>
 </nav>
-           <div style={{marginTop: '80px'}}>
+           <div style={{margin: '80px 40px'}}>
            <Grid>
             <Grid.Column width={14}>
            <form className="form-horizontal">

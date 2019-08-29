@@ -212,8 +212,8 @@ class Home extends React.Component {
       // {...this.props}
     />
         </li> */}
-        <li><Link to="/" style={{outline: 'none'}}>Home</Link></li>
-        <li><Link to="/" style={{outline: 'none'}}>Company</Link></li>
+        {/* <li><Link to="/" style={{outline: 'none'}}>Home</Link></li>
+        <li><Link to="/" style={{outline: 'none'}}>Company</Link></li> */}
         <li><Link to="/Customer" style={{outline: 'none'}}>Customer</Link></li>
         <li><Link to="/Seller" style={{outline: 'none'}}>Seller</Link></li>
       </ul>

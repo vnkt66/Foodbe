@@ -39,7 +39,7 @@ mongoose.set('useCreateIndex', true);
 
 var url = "mongodb+srv://venkatitsme6:LaasyaSrihan@portalcluster-rnpcq.mongodb.net/test?retryWrites=true&w=majority" || "mongodb://localhost/portal"
 
-mongoose.connect(url, { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/portal', { useNewUrlParser: true });
 const connection = mongoose.connection;
 
 connection.once('open', () => {

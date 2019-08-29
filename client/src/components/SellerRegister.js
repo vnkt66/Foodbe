@@ -147,7 +147,7 @@ onSubmit = (event) => {
       this.setState({
         loading: false
       })
-      this.props.history.push('/SellLogin');
+      // this.props.history.push('/SellLogin');
   }
   });
 
