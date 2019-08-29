@@ -354,19 +354,14 @@ router.post('/selleraddproduct', upload.single('file'), (req, res) => {
 })
 
 router.post('/checkout/:id', function(req, res) {
-   console.log(req);
-   console.log(customername);
-//    var transporter = nodemailer.createTransport(Sendgrid({
-//     apiKey: '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'
-//     }));
    Client.find({email: req.body.clientemail}, (err, user) => {
 
-       Product.findOne({_id: req.params.id}, function(err, product) {
+       Product.findOne({name: req.params.id}, function(err, product) {
 
        product.boughtcount = product.boughtcount + 1;
 
        product.save();
-       console.log(user);
+       
        var clientorder = new ClientOrder({
                             name: req.body.product.name,
                             productid: product._id,
@@ -466,6 +461,7 @@ router.get('/sellerproduct/:id2', function(req, res) {
 
 router.get('/customerproductone/:id', (req, res) => {
     Product.find({_id: req.params.id}, function(err, product) {
+        Product.find({name: req.params.id}, function(err, product) {
         console.log(product);
         var viewcount = product[0].viewcount + 1;
         console.log(viewcount);
@@ -481,6 +477,7 @@ router.get('/customerproductone/:id', (req, res) => {
         res.send({product: product});
     })
 })
+})
 
 router.get('/customerproduct/:id2', function(req, res) {
     Client.findOne({email: req.query.customermail}, function(err, user) {
@@ -493,6 +490,8 @@ router.get('/customerproduct/:id2', function(req, res) {
         })
     
         Product.findOne({_id: req.params.id2}, function(err, sellerproduct) {
+
+        Product.findOne({name: req.params.id2}, function(err, sellerproduct) {
         // console.log(sellerproduct);
         sellerproduct.checkoutcount = sellerproduct.checkoutcount + 1;
         sellerproduct.save();
@@ -520,6 +519,7 @@ router.get('/customerproduct/:id2', function(req, res) {
         res.send({sproduct: sellerproduct, clientsellerdetail: clientdetails});
         })
       })
+    })
     })
 })
 
@@ -612,8 +612,8 @@ router.post('/custregister', upload.single('file'), function(req, res, next) {
               transporter.sendMail(mailOptions, function (err) {
                   if (err) { return res.status(500).send({ msg: err.message }); }
                   console.log('Verifying');
-                  res.status(200).send('A verification email has been sent to ' + client.email + '.');
                 });
+                res.status(200).send('A verification email has been sent to ' + client.email + '.');
               });
             });
         });

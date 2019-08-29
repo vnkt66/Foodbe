@@ -20,7 +20,7 @@ class Seller extends Component {
       this.props.history.push('/SellLogin');
     }
     axios.get('/portal/sellerlogindetails').then((res) => {
-      if(res.data.sellers) {
+      if(usermail !== null) {
       this.setState({
         sellers: res.data.sellers,
         sellermail: usermail
@@ -29,9 +29,9 @@ class Seller extends Component {
     })
   }
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
-  onAddProducts = () => {
-    this.props.history.push('/SellerAdd');
-} 
+//   onAddProducts = () => {
+//     this.props.history.push('/SellerAdd');
+// } 
   onLogout = () => {
     // toast.notify('Hope to see you again Bye!!', {
     //   duration: 2000
@@ -74,7 +74,7 @@ class Seller extends Component {
     // const { activeItem } = this.state;
     var route1 = null;
     if(this.state.sellermail !== null) { 
-      route1 = <li><Link to="/selleredit" style={{outline: 'none'}}>products</Link></li>
+      route1 = <li><Link to="/selleredit" style={{outline: 'none'}}>Products</Link></li>
     }
     var route2 = <li><Link to="/SellRegister" style={{outline: 'none'}}>Register</Link></li>
 //     <div>
@@ -86,7 +86,7 @@ class Seller extends Component {
 var route3 = <li><Link to="/SellLogin" style={{outline: 'none'}}>Login</Link></li>
 if(this.state.sellermail !== null) { route3 = null }
     if(this.state.sellermail !== null) {
-  var  route4 = <li><Link to="" onClick={this.onLogout} style={{outline: 'none'}}>logout</Link></li>
+  var  route4 = <li><Link to="" onClick={this.onLogout} style={{outline: 'none'}}>Logout</Link></li>
 //   <Menu.Menu position='right'>
 //     <Menu.Item
 //    name='logout'
@@ -95,10 +95,10 @@ if(this.state.sellermail !== null) { route3 = null }
 //  </Menu.Menu>;
     }
     if(this.state.sellermail !== null) {
-      var  route5 = <li><Link to="/SellOrders" style={{outline: 'none'}}>orders</Link></li>
+      var  route5 = <li><Link to="/SellOrders" style={{outline: 'none'}}>Orders</Link></li>
     }
     if(this.state.sellermail !== null) {
-      var  route6 = <li><Link to="" onClick={this.onAddProducts} style={{outline: 'none'}}>Add Product</Link></li>
+      var  route6 = <li><Link to="/SellerAdd" style={{outline: 'none'}}>Add Product</Link></li>
     //   <Menu.Item
     //   name='addproduct'
     //   onClick={this.onAddProducts}

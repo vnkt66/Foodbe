@@ -1,0 +1,27 @@
+@media only screen and (max-width: 1440px) {
+#inp {
+    margin: 0 200px;
+}
+#sea {
+    left: 380px;
+}
+}
+
+@media only screen and (max-width: 800px) {
+    #inp {
+        margin: 0 160px;
+    }
+    #sea {
+        left: 335px;
+    }
+}
+
+
+@media only screen and (max-width: 414px) {
+    #inp {
+        margin: 0 40px;
+    }
+    #sea {
+        left: 215px;
+    }
+}

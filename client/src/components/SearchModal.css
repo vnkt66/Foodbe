@@ -85,7 +85,6 @@
      top: 300px;
      left: 180px;
     }
-
     html.mdl-js body.dimmable.dimmed.scrolling div.ui.page.modals.dimmer.transition.visible.active div.ui.small.basic.scrolling.modal.transition.visible.active div#modalcontentprice.content div.ui.icon.input input {
         margin: 0 0 0 120px;
     }
@@ -110,8 +109,7 @@
      top: 300px;
      left: 100px;
     }
-
     html.mdl-js body.dimmable.dimmed.scrolling div.ui.page.modals.dimmer.transition.visible.active div.ui.small.basic.scrolling.modal.transition.visible.active div#modalcontentprice.content div.ui.icon.input input {
         margin: 0 0 0 40px;
     }
-   } 
+}

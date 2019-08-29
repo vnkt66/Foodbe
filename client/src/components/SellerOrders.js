@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'; 
 // import toast from 'toasted-notes';
 // import 'toasted-notes/src/styles.css';
-import { List, Item, Image, Header, Segment, TransitionablePortal, Icon } from 'semantic-ui-react';
+import { List, Item, Image, Segment } from 'semantic-ui-react';
 
 class SellerOrders extends Component {
     state = {
@@ -66,10 +66,10 @@ class SellerOrders extends Component {
   }
     render() {
         // const { activeItem } = this.state;
-        const { open } = this.state;
+        // const { open } = this.state;
         let orders = this.state.orders.map((order) => {
             return (
-            <List.Item key={order._id}>
+            <List.Item key={order._id} id="listitem" style={{ textAlign: 'center'}}>
              <Image avatar src={order.picture} />
              <List.Content>
              {/* <List.Header>{order.name}</List.Header> */}
@@ -80,7 +80,14 @@ class SellerOrders extends Component {
              <Item.Meta>
               <span className='quantity'>Quantity: {order.quantity}</span>
              </Item.Meta>
-             <Icon 
+             <Item.Meta>
+              <span className='mail'>Customermail: {order.clientemail}</span>
+             </Item.Meta>
+             <Item.Meta>
+              <span className='phone'>Customerphone: {order.clientphone}</span>
+             </Item.Meta>
+             </List.Content>
+             {/* <Icon 
               onClick={this.handleClick}
               name='plus circle' 
               style={{cursor:'pointer'}}
@@ -93,8 +100,9 @@ class SellerOrders extends Component {
                <p>{order.clientemail}</p>
                <p>{order.clientphone}</p>
                </Segment>
-             </TransitionablePortal>
-             </div>
+             </TransitionablePortal> 
+             </div> */}
+             <hr />
              </List.Item>
             );
         })

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ListGroup, ListGroupItem, Button,  Container, Col, Image, Row, Form} from 'react-bootstrap';
 import { Link } from 'react-router-dom'; 
-// import { Menu } from 'semantic-ui-react';
+import { Loader } from 'semantic-ui-react';
 import axios from 'axios';
 // import toast from 'toasted-notes' 
 // import 'toasted-notes/src/styles.css';
@@ -18,7 +18,8 @@ class CustomerProduct extends Component {
         custstate: 'TamilNadu',
         custzip: '',
         customermail: '',
-        sellermail: '' 
+        sellermail: '' ,
+        loading: false
     }
 
     onChangeemail = (event) => {
@@ -152,9 +153,17 @@ class CustomerProduct extends Component {
            clientphone: this.state.Information.clientphone,
            sellerphone: this.state.Information.sellerphone
         }
+        this.setState({
+          loading: true
+        })
         axios.post('/portal/checkout/' + this.props.match.params.id2, details)
         .then((res) => {
             console.log(res);
+            if(res) {
+              this.setState({
+                loading: false
+              })
+            }
             this.props.history.push('/customerproducts');
         })
 
@@ -171,48 +180,15 @@ class CustomerProduct extends Component {
         })
     }
     render() {
-        return (
-        <div>
-          {/* <Menu pointing secondary>
-            <Menu.Item as={Link} to="/Customer" name='home' active={activeItem === 'home'} onClick={this.handleItemClick}></Menu.Item>
-            <Menu.Item as={Link} to="/customerproducts" name='products' onClick={this.handleItemClick}></Menu.Item>
-            <Menu.Item as={Link} to="/CustOrders" name='orders' onClick={this.handleItemClick}></Menu.Item>
-            <Menu.Menu position='right'>
-            <Menu.Item
-              name='logout'
-              style={{ cursor: 'pointer'}}
-              onClick={this.onLogout}
-            />
-            </Menu.Menu>  
-          </Menu> */}
-          <nav className="navbar navbar-inverse navbar-fixed-top">
-  <div className="container-fluid">
-    <div className="navbar-header">
-      <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span className="sr-only">Toggle navigation</span>
-        <span className="icon-bar"></span>
-        <span className="icon-bar"></span>
-        <span className="icon-bar"></span>
-      </button>
-      <a className="navbar-brand" href="/" style={{width: '170px', fontSize: '35px', marginLeft: '15px', outline: 'none'}}>
-       Zerinth
-      </a>
-    </div>
-
-    <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul className="nav navbar-nav navbar-right">
-        <li><Link to="/Customer" style={{outline: 'none'}}>Home</Link></li>
-        <li><Link to="/customerproducts" style={{outline: 'none'}}>Products</Link></li>
-        <li><Link to="/CustOrders" style={{outline: 'none'}}>Orders</Link></li>
-        <li><Link to="" onClick={this.onLogout} style={{outline: 'none'}}>Logout</Link></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-          <ListGroup className="list-group-flush" style={{marginTop: '50px'}}>
+        var data;
+        if(this.state.loading) {
+          // if(true) {
+          data = <Loader style={{marginTop: '190px'}} active inline='centered' size='massive'>Hola, Your Order has started Processing</Loader>
+        } else {
+          data =  <ListGroup className="list-group-flush" style={{marginTop: '50px'}}>
           <Container>
           <Row className="justify-content-md-center">
-          <Col xs={12} sm={4} md={4} lg={4}>
+          <Col xs={12} sm={4} md={4} lg={4} style={{paddingRight: '10px'}}>
           <h3>Product Details:</h3>
           <Image src={this.state.product.picture} style={{width: '100%'}}/>
           <ListGroupItem>Name: {this.state.product.name}</ListGroupItem>
@@ -274,6 +250,110 @@ class CustomerProduct extends Component {
           </Row>
           </Container>
           </ListGroup>
+        }
+        return (
+        <div>
+          {/* <Menu pointing secondary>
+            <Menu.Item as={Link} to="/Customer" name='home' active={activeItem === 'home'} onClick={this.handleItemClick}></Menu.Item>
+            <Menu.Item as={Link} to="/customerproducts" name='products' onClick={this.handleItemClick}></Menu.Item>
+            <Menu.Item as={Link} to="/CustOrders" name='orders' onClick={this.handleItemClick}></Menu.Item>
+            <Menu.Menu position='right'>
+            <Menu.Item
+              name='logout'
+              style={{ cursor: 'pointer'}}
+              onClick={this.onLogout}
+            />
+            </Menu.Menu>  
+          </Menu> */}
+          <nav className="navbar navbar-inverse navbar-fixed-top">
+  <div className="container-fluid">
+    <div className="navbar-header">
+      <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span className="sr-only">Toggle navigation</span>
+        <span className="icon-bar"></span>
+        <span className="icon-bar"></span>
+        <span className="icon-bar"></span>
+      </button>
+      <a className="navbar-brand" href="/" style={{width: '170px', fontSize: '35px', marginLeft: '15px', outline: 'none'}}>
+       Zerinth
+      </a>
+    </div>
+
+    <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul className="nav navbar-nav navbar-right">
+        <li><Link to="/Customer" style={{outline: 'none'}}>Home</Link></li>
+        <li><Link to="/customerproducts" style={{outline: 'none'}}>Products</Link></li>
+        <li><Link to="/CustOrders" style={{outline: 'none'}}>Orders</Link></li>
+        <li><Link to="" onClick={this.onLogout} style={{outline: 'none'}}>Logout</Link></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+         { data }
+          {/* <ListGroup className="list-group-flush" style={{marginTop: '50px'}}>
+          <Container>
+          <Row className="justify-content-md-center">
+          <Col xs={12} sm={4} md={4} lg={4} style={{paddingRight: '10px'}}>
+          <h3>Product Details:</h3>
+          <Image src={this.state.product.picture} style={{width: '100%'}}/>
+          <ListGroupItem>Name: {this.state.product.name}</ListGroupItem>
+          <ListGroupItem>Description: {this.state.product.description}</ListGroupItem>
+          <ListGroupItem>Price: {this.state.product.price - this.state.product.discount}</ListGroupItem>
+          <ListGroupItem>
+            <Form.Control type="number" placeholder="Quantity" min="1" onChange={this.onQuantityChange} max={this.state.product.quantity}/>
+          </ListGroupItem>
+          </Col>
+          <Col xs={12} sm={8} md={8} lg={8}>
+          <h3>Delivery Details:</h3>
+          <Form onSubmit={this.onSubmit}>
+           <Form.Row>
+           <Form.Group as={Col} controlId="formGridEmail">
+           <Form.Label>Email</Form.Label>
+           <Form.Control type="email" placeholder="Email"  onChange={this.onChangeemail}/>
+           </Form.Group>
+
+           <Form.Group as={Col} controlId="formGridPassword">
+           <Form.Label>Password</Form.Label>
+           <Form.Control type="password" placeholder="Password"  onChange={this.onChangepassword}/>
+           </Form.Group>
+           </Form.Row>
+
+           <Form.Group controlId="formGridAddress1">
+           <Form.Label>Address</Form.Label>
+           <Form.Control placeholder="1234 Main St"  onChange={this.onChangeaddress}/>
+           </Form.Group>
+
+           <Form.Group controlId="formGridAddress2">
+           <Form.Label>Address 2</Form.Label>
+           <Form.Control placeholder="Apartment, studio, or floor"  onChange={this.onChangeaddress1}/>
+           </Form.Group>
+
+           <Form.Row>
+           <Form.Group as={Col} controlId="formGridCity">
+           <Form.Label>City</Form.Label>
+           <Form.Control  onChange={this.onChangecity}/>
+           </Form.Group>
+
+           <Form.Group as={Col} controlId="formGridState">
+           <Form.Label>State</Form.Label>
+           <Form.Control as="select" value={this.state.custstate} onChange={this.onChangestate}>
+           <option value="TamilNadu">TamilNadu</option>
+           <option value="Maharastra">Maharastra</option>
+           </Form.Control>
+           </Form.Group>
+
+           <Form.Group as={Col} controlId="formGridZip">
+           <Form.Label>Zip</Form.Label>
+           <Form.Control value={this.state.custzip} onChange={this.onChangezip}/>
+           </Form.Group>
+           </Form.Row>
+
+          <Button variant="primary" type="submit">Submit</Button>
+          </Form>
+          </Col>
+          </Row>
+          </Container>
+          </ListGroup> */}
         </div>
         )
     }

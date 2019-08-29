@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'; 
-import { Loader } from 'semantic-ui-react';
+import { Loader, Message } from 'semantic-ui-react';
+// import { withToastManager } from 'react-toast-notifications';
 // import toast from 'toasted-notes';
 // import 'toasted-notes/src/styles.css';
 // import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
@@ -23,7 +24,8 @@ class SellerRegister extends Component {
     error: '',
     loading: false,
     customermail: '',
-    sellermail: '' 
+    sellermail: '',
+    visible: false
   }
 
 componentDidMount() {
@@ -82,12 +84,16 @@ onChangeimage = (event) => {
   })
 }
 
+handleDismiss = () => {
+  this.setState({ visible: false })
+}
+
 onSubmit = (event) => {
   event.preventDefault();
 
-  this.setState({
-    loading: true
-  })
+  // this.setState({
+  //   loading: true
+  // })
 
   const data = new FormData(); 
   data.append('file', this.state.selectedFile);
@@ -109,6 +115,9 @@ onSubmit = (event) => {
   //     place: this.state.sellerplace,
   //     email: this.state.selleremail
   // }
+  this.setState({
+    loading: true
+  })
 
   axios.post('/portal/sellregister', data, { 
     // receive two    parameter endpoint url ,form data
@@ -117,7 +126,16 @@ onSubmit = (event) => {
     // toast.notify('Verfication Link has been sent to your email', {
     //   duration: 1000
     // });
-    console.log(res.statusText);
+    // withToastManager.add('Verfication Link has been sent to your email', {
+    //   appearance: 'success',
+    //   autoDismiss: true,
+    //   pauseOnHover: false,
+    // })
+    // console.log(res.statusText);
+
+    this.setState({
+      visible: true
+    })
     // if(!res.statusText) {
     //   this.setState({
     //     loading: true
@@ -144,8 +162,20 @@ onSubmit = (event) => {
 
  render() {
   var data;
+  var k;
+  if(this.state.visible) {
+    // if(true) {
+    k = <Message
+       color='green'
+       onDismiss={this.handleDismiss}
+       header='Hello Customer,'
+       content='Verification Link has been sent to your mail'
+     />
+ } else {
+   k = '';
+ }
   if(this.state.loading) {
-    data = <Loader size='massive' inline='centered'>Loading</Loader>
+    data = <Loader style={{marginTop: '190px'}} active inline='centered' size='massive'>Registering</Loader>
   } else {
     data =   <SignUp 
               onnamechange={(event) => this.onChangename(event)}
@@ -233,6 +263,7 @@ onSubmit = (event) => {
   </div>
 </nav>
 <div style={{marginTop: '20px'}}>
+      {k}
       {data}
     </div>
     </div>

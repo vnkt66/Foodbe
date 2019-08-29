@@ -173,41 +173,41 @@ class SellerEditProduct extends Component {
     </div>
   </div>
 </nav>
-           <div style={{marginTop: '50px'}}>
+           <div style={{width: '80%', margin: '50px 30px'}}>
             <h2>Edit Product</h2>
             <form className="form-horizontal" encType="multipart/form-data">
             <div className="form-group">
-            <label htmlFor="inputusername3" className="col-sm-2 control-label">Name</label>
+            <label htmlFor="inputusername3" className="col-sm-2 control-label" style={{marginRight: '35px'}}>Name</label>
             <div className="col-sm-8">
             <input type="text" className="form-control" id="inputusername3" value={this.state.name} onChange={this.onChangename} placeholder="Name" />
             </div>
             </div> 
             <div className="form-group">
-            <label htmlFor="inputdesc3" className="col-sm-2 control-label">Description</label>
+            <label htmlFor="inputdesc3" className="col-sm-2 control-label" style={{marginRight: '35px'}}>Description</label>
             <div className="col-sm-8">
             <input type="text" className="form-control" id="inputdesc3"value={this.state.description} onChange={this.onChangedescription} placeholder="Description" />
             </div>
             </div> 
             <div className="form-group">
-            <label htmlFor="inputprice3" className="col-sm-2 control-label">Price</label>
+            <label htmlFor="inputprice3" className="col-sm-2 control-label" style={{marginRight: '35px'}}>Price</label>
             <div className="col-sm-8">
             <input type="number" className="form-control" id="inputprice3" value={this.state.price} onChange={this.onChangeprice} placeholder="Price" />
             </div>
             </div> 
             <div className="form-group">
-            <label htmlFor="inputpicture3" className="col-sm-2 control-label">upload Image</label>
+            <label htmlFor="inputpicture3" className="col-sm-2 control-label" style={{marginRight: '35px'}}>upload Image</label>
             <div className="col-sm-8">
             <input type="file"  id="inputpicture3" name="file"  onChange={this.onChangeimage} accept="image/*" placeholder="Image" required/>
             </div>
             </div> 
             <div className="form-group">
-            <label htmlFor="inputquantity3" className="col-sm-2 control-label">Quantity</label>
+            <label htmlFor="inputquantity3" className="col-sm-2 control-label" style={{marginRight: '35px'}}>Quantity</label>
             <div className="col-sm-8">
             <input type="number" className="form-control" id="inputquantity3" value={this.state.quantity} onChange={this.onChangequantity} placeholder="Quantity" />
             </div>
             </div> 
             <div className="form-group">
-            <label htmlFor="inputdiscount3" className="col-sm-2 control-label">Discount</label>
+            <label htmlFor="inputdiscount3" className="col-sm-2 control-label" style={{marginRight: '35px'}}>Discount</label>
             <div className="col-sm-8">
             <input type="number" className="form-control" id="inputdiscount3" value={this.state.discount} onChange={this.onChangediscount} placeholder="Discount" />
             </div>

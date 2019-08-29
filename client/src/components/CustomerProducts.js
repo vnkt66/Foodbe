@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'; 
-import { Menu, Input, Dropdown } from 'semantic-ui-react';
+import PropTypes from 'prop-types'
+import _ from 'lodash';
+import { Menu, Search, Dropdown, Icon } from 'semantic-ui-react';
 import Product from './Product';
 // import toast from 'toasted-notes' 
 // import 'toasted-notes/src/styles.css';
@@ -12,17 +14,31 @@ import PriceModal from './PriceModal';
 import RatingModal from './RatingModal';
 import SearchModal from './SearchModel';
 
+var source = ({})
+
+const resultRenderer = ({ title }) => <p><Icon name="search" size="small"></Icon> {title}</p>
+
+resultRenderer.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+}
+
 class CustomerProducts extends Component {
     state = {
         products: [],
+        searchproducts: [],
         activeItem: 'products',
         customermail: '',
         search: '',
+        isLoading: false, 
+        results: [], 
+        value: '',
+        click : false,
         modalOpen: false,
         discountmodalOpen: false,
         ratingmodalOpen: false,
         searchmodalOpen: false,
-        value: [0, 0],
+        values: [0, 0],
         discountvalue: [0, 0],
         // ratingvalue: [0, 0],
         ratingvalue: 0,
@@ -138,11 +154,11 @@ class CustomerProducts extends Component {
       console.log('hello');
 
      this.setState({
-       value: newValue,
+       values: newValue,
        pricevaluestart: newValue[0],
        pricevalueend: newValue[1]
      }, () => {
-       console.log(this.state.value);
+       console.log(this.state.values);
      });
     };
 
@@ -187,10 +203,11 @@ class CustomerProducts extends Component {
 
     onkeydown = (event) => {
       var keycode = event.keyCode;
+      console.log(event)
       if(keycode === 13) {
         axios.get('/portal/customerproducts', {
           params: {
-            search: this.state.search
+            search: this.state.value
           }
         })
         .then((res) => {
@@ -267,12 +284,21 @@ class CustomerProducts extends Component {
         this.setState({
           customermail: usermail
         })
-        if(this.state.customermail === null) {
-          this.props.history.push('/CustLogin');
-        }
+        // if(this.state.customermail === null) {
+        //   this.props.history.push('/CustLogin');
+        // }
         // axios.get('http://localhost:4000/customerproducts/' + this.props.match.params.id)
         axios.get('/portal/customerproducts')
         .then((res) => {
+          var l = res.data.products.map((product) => {
+            return ({
+             "title": product.name,
+             "description": product.description,
+             "image": product.picture,
+             "price": product.price + '₹'
+            })
+          })
+          source = l;
             console.log(res);
             // if(res.data.msg) {
             //     this.props.history.push('/CustLogin');
@@ -284,7 +310,7 @@ class CustomerProducts extends Component {
               // if(this.state.customermail === null) {
               //   this.props.history.push('/CustLogin');
               // }
-              if(this.state.customermail !== null) {
+              if(this.state.customermail === null || this.state.customermail !== null) {
                 this.setState({
                   products: res.data.products
               })
@@ -292,6 +318,25 @@ class CustomerProducts extends Component {
             // })
       })
     }
+
+    handleResultSelect = (e, { result }) => this.setState({ value: result.title })
+
+  handleSearchChange = (e, { value }) => {
+    var key = e.target.value;
+    this.setState({ isLoading: true, value, search: key })
+
+    setTimeout(() => {
+      if (this.state.value.length < 1) return this.setState({ isLoading: false, results: [], value: ''})
+
+      const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
+      const isMatch = (result) => re.test(result.title)
+
+      this.setState({
+        isLoading: false,
+        results: _.filter(source, isMatch),
+      })
+    }, 300)
+  }
 
     onLogout = () => {
             // toast.notify('Hope to see you again Bye!!', {
@@ -331,6 +376,16 @@ class CustomerProducts extends Component {
      })
     }
 
+    // inputchange = (e) => {
+    //   console.log(e.target.value);
+    // }
+
+    onSearchClick = () => {
+      this.setState({
+        click: !this.state.click
+      })
+    }
+
     onRecommendedToYou = () => {
       let changedproducts = [...this.state.products];
       console.log('recommeded');
@@ -342,9 +397,10 @@ class CustomerProducts extends Component {
      })
     }
     render() {
+        const { isLoading, value, results } = this.state;
         const { activeItem } = this.state;
-        if(this.state.customermail !== null) {
-          var categories = <Menu stackable>
+        if(this.state.customermail !== null || this.state.customermail === null) {
+          var categories = <Menu stackable style={{marginTop: '50px'}}>
           <Menu.Item header>Sort By</Menu.Item>
           <Menu.Item
             name='Trending Now'
@@ -421,27 +477,55 @@ class CustomerProducts extends Component {
       <a className="navbar-brand" href="/" style={{width: '170px', fontSize: '35px', marginLeft: '15px', outline: 'none'}}>
        Zerinth
       </a>
+      <Search
+      input={{ icon: 'search' }}
+      style={{visibility: this.state.click ? 'visible' : 'hidden'}}
+      loading={isLoading}
+      onResultSelect={this.handleResultSelect}
+      placeholder="Search for Books"
+      onSearchChange={_.debounce(this.handleSearchChange, 500, {
+        leading: true,
+      })}
+      onInput={this.inputchange}
+      onKeyDown={this.onkeydown}
+      results={results}
+      value={value}
+      resultRenderer={resultRenderer}
+      // {...this.props}
+    />
+    <Icon 
+     name='search' 
+     size='small' 
+     style={{color: 'white', fontSize: '19px', position: 'absolute', left: '180px', top: '5px', cursor: 'pointer'}} 
+     onClick={this.onSearchClick}
+     className={this.state.toggle ? 'rotate': ''}
+     id="icon"
+     circular 
+     />
+      {/* <Input id="inputsearch" size='mini' icon='search' name="search" onChange={this.onInputChange} placeholder='Search books' onKeyDown={this.onkeydown}/> */}
     </div>
 
     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul className="nav navbar-nav navbar-right">
+        {this.state.customermail ? '' : <li><Link to="/CustLogin" style={{outline: 'none'}}>Login</Link></li>}
+        {this.state.customermail ? '' : <li><Link to="/CustRegister" style={{outline: 'none'}}>Register</Link></li>}
         <li><Link to="/Customer" style={{outline: 'none'}}>Home</Link></li>
         <li><Link to="/customerproducts" style={{outline: 'none'}}>Products</Link></li>
-        <li><Link to="/CustOrders" style={{outline: 'none'}}>Orders</Link></li>
-        <li style={{top: '8px'}} id="searchli"><Input size='mini' icon='search' name="search" onChange={this.onInputChange} placeholder='Search books' onKeyDown={this.onkeydown}/></li>
-        <li id="logoutli"><Link to="" onClick={this.onLogout} style={{outline: 'none'}}>Logout</Link></li>
+        {this.state.customermail ? <li><Link to="/CustOrders" style={{outline: 'none'}}>Orders</Link></li> : ''}
+        {this.state.customermail ? <li id="logoutli"><Link to="" onClick={this.onLogout} style={{outline: 'none'}}>Logout</Link></li> : '' }
       </ul>
     </div>
   </div>
 </nav>
         {categories}
       </div>
+        <div>
         {products}
         <PriceModal 
        name='Pick Price Value Range'
        modalOpen={this.state.modalOpen}
        handleClose={() => this.handleClose()}
-       value={this.state.value}
+       value={this.state.values}
        handlechange={this.handleChange}
        min={0}
        max={1000}
@@ -476,7 +560,7 @@ class CustomerProducts extends Component {
       //  min={0}
       //  max={5}
        />
-       
+       </div>
       </div>
         )
     }

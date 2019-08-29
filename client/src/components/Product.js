@@ -11,7 +11,7 @@ class Product extends Component {
     }
 
     onProduct = () => {
-        this.props.history.push('/customerproduct/' + this.props.id);
+        this.props.history.push('/customerproduct/' + this.props.name);
     }
 
     // handleRate = (e, { rating, maxRating }) => {

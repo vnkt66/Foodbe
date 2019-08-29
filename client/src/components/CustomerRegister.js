@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'; 
-import { Loader } from 'semantic-ui-react';
+import { Loader, Message } from 'semantic-ui-react';
 // import toast from 'toasted-notes';
 // import 'toasted-notes/src/styles.css';
 // import Loader from './Loader';
+// import notify from 'msg-notify';
 import SignUp from './CustRegister';
 
 class CustomerRegister extends Component {
@@ -21,7 +22,8 @@ class CustomerRegister extends Component {
     customermail: '',
     sellermail: '' ,
     Loading: false,
-    loading: false
+    loading: false,
+    visible: false
   }
   componentDidMount() {
     // axios.get('http://localhost:4000/logindetails').then((res) => {
@@ -79,12 +81,12 @@ onChangeimage = (event) => {
   })
 }
 
+handleDismiss = () => {
+  this.setState({ visible: false })
+}
+
 onSubmit = (event) => {
   event.preventDefault();
-
-  this.setState({
-    loading: true
-  })
 
   const data = new FormData(); 
   data.append('file', this.state.selectedFile);
@@ -107,20 +109,29 @@ onSubmit = (event) => {
   //     place: this.state.customerplace
   // }
 
+  this.setState({
+    loading: true
+  })
+
   axios.post('/portal/custregister', data, { 
     // receive two    parameter endpoint url ,form data
   })
   .then((res) => {
-    console.log(res.statusText);
+    // console.log(res);
+    // console.log(res.statusText);
     // toast.notify('Verfication Link has been sent to your email', {
     //   duration: 2000
     // });
+    // notify('notification msg', 'success');
+    this.setState({
+      visible: true
+    })
     if(res.statusText) {
       this.setState({
         loading: false
       })
 
-      this.props.history.push('/CustLogin');
+      // this.props.history.push('/CustLogin');
   }
     // if(res.data.username) {
     //   this.setState({
@@ -147,8 +158,20 @@ onSubmit = (event) => {
 render() {
   // const { activeItem } = this.state;
   var data;
+  var k;
+  if(this.state.visible) {
+    // if(true) {
+    k = <Message
+       color='green'
+       onDismiss={this.handleDismiss}
+       header='Hello Customer,'
+       content='Verification Link has been sent to your mail'
+     />
+ } else {
+   k = '';
+ }
   if(this.state.loading) {
-    data = <Loader size='massive' inline='centered'>Loading</Loader>
+    data = <Loader style={{marginTop: '190px'}} active inline='centered' size='massive'>Registering</Loader>
   } else {
     data =   <SignUp 
               onnamechange={(event) => this.onChangename(event)}
@@ -189,6 +212,7 @@ render() {
   </div>
 </nav>
         <div style={{marginTop: '50px'}}>
+        {k}
         {data}
       {/* <h1>Customer Register</h1>
       <form className="form-horizontal">

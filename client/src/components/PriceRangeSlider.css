@@ -1,5 +1,4 @@
-html.mdl-js body.dimmable.dimmed.scrolling div.ui.page.modals.dimmer.transition.visible.active div.ui.small.basic.scrolling.modal.transition.visible.active div#modalcontentprice.content div.makeStyles-root-1 span.MuiSlider-root {
-    /* color: #2c790b; */
+/* html body.dimmable.dimmed.scrolling div.ui.page.modals.dimmer.transition.visible.active div.ui.small.basic.scrolling.modal.transition.visible.active div#modalcontentprice.content div.makeStyles-root-1 span.MuiSlider-root {
     width: 100%;
     cursor: pointer;
     height: 2px;
@@ -11,7 +10,7 @@ html.mdl-js body.dimmable.dimmed.scrolling div.ui.page.modals.dimmer.transition.
     -webkit-tap-highlight-color: transparent;
     color: darkolivegreen;
  }
- html.mdl-js body.dimmable.dimmed.scrolling div.ui.page.modals.dimmer.transition.visible.active div.ui.small.basic.scrolling.modal.transition.visible.active div#modalcontentprice.content div.makeStyles-root-1 span.MuiSlider-root span.MuiSlider-rail {
+ html body.dimmable.dimmed.scrolling div.ui.page.modals.dimmer.transition.visible.active div.ui.small.basic.scrolling.modal.transition.visible.active div#modalcontentprice.content div.makeStyles-root-1 span.MuiSlider-root span.MuiSlider-rail {
     width: 100%;
     height: 10px;
     display: block;
@@ -20,21 +19,20 @@ html.mdl-js body.dimmable.dimmed.scrolling div.ui.page.modals.dimmer.transition.
     border-radius: 4px;
     background-color: currentColor;
  }
- html.mdl-js body.dimmable.dimmed.scrolling div.ui.page.modals.dimmer.transition.visible.active div.ui.small.basic.scrolling.modal.transition.visible.active div#modalcontentprice.content div.makeStyles-root-1 span.MuiSlider-root span.MuiSlider-track {
+ html body.dimmable.dimmed.scrolling div.ui.page.modals.dimmer.transition.visible.active div.ui.small.basic.scrolling.modal.transition.visible.active div#modalcontentprice.content div.makeStyles-root-1 span.MuiSlider-root span.MuiSlider-track {
     height: 10px;
     display: block;
     position: absolute;
     border-radius: 1px;
     background-color: currentColor;
  }
- html.mdl-js body.dimmable.dimmed.scrolling div.ui.page.modals.dimmer.transition.visible.active div.ui.small.basic.scrolling.modal.transition.visible.active div#modalcontentprice.content div.makeStyles-root-1 span.MuiSlider-root span.MuiSlider-thumb.PrivateValueLabel-thumb-16 {
+ html body.dimmable.dimmed.scrolling div.ui.page.modals.dimmer.transition.visible.active div.ui.small.basic.scrolling.modal.transition.visible.active div#modalcontentprice.content div.makeStyles-root-1 span.MuiSlider-root span.MuiSlider-thumb.PrivateValueLabel-thumb-16 {
     width: 18px;
     height: 18px;
     display: flex;
     outline: 0;
     position: absolute;
     box-sizing: border-box;
-    /* margin-top: -3px; */
     transition: box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     align-items: center;
     margin-left: -6px;
@@ -42,4 +40,4 @@ html.mdl-js body.dimmable.dimmed.scrolling div.ui.page.modals.dimmer.transition.
     justify-content: center;
     background-color: currentColor;
     color: #b7c686;
-}
+} */

@@ -4,6 +4,7 @@ import { Button, Icon, Modal } from 'semantic-ui-react'
 import InputExampleIconElement from './Search';
 import './SearchModal.css';
 // import './PriceRangeSlider.css';
+// import './Search.css';
 
 export default class SearchModal extends Component {
   render() {
@@ -26,6 +27,7 @@ export default class SearchModal extends Component {
            min={this.props.min}
            max={this.props.max}/> */}
            <InputExampleIconElement
+            id="inp"
             onchange={(event) => this.props.onchange(event)}
             value={this.props.value}/>
         </Modal.Content>

@@ -22,9 +22,9 @@ class CustomerProduct extends Component {
         //     this.props.history.push('/CustLogin');
         // }
     var usermail = localStorage.getItem('username');
-    if(usermail === null) {
-      this.props.history.push('/CustLogin');
-  }
+  //   if(usermail === null) {
+  //     this.props.history.push('/CustLogin');
+  // }
     this.setState({
       customermail: usermail
     })
@@ -38,7 +38,7 @@ class CustomerProduct extends Component {
         // //     this.props.history.push('/CustLogin');
         // // }
         //   console.log(res);
-          if(usermail !== null) {
+          if(usermail !== null || usermail === null) {
             this.setState({
                 product: res.data.product[0]
             })
@@ -150,8 +150,8 @@ class CustomerProduct extends Component {
       <ul className="nav navbar-nav navbar-right">
         <li><Link to="/Customer" style={{outline: 'none'}}>Home</Link></li>
         <li><Link to="/customerproducts" style={{outline: 'none'}}>Products</Link></li>
-        <li><Link to="/CustOrders" style={{outline: 'none'}}>Orders</Link></li>
-        <li><Link to="" onClick={this.onLogout} style={{outline: 'none'}}>Logout</Link></li>
+        {this.state.customermail ? <li><Link to="/CustOrders" style={{outline: 'none'}}>Orders</Link></li> : ''}
+        {this.state.customermail ? <li><Link to="" onClick={this.onLogout} style={{outline: 'none'}}>Logout</Link></li> : ''}
       </ul>
     </div>
   </div>

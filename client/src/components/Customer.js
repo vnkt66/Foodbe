@@ -20,7 +20,7 @@ class Customer extends Component {
       this.props.history.push('/CustLogin');
     }
     axios.get('/portal/logindetails').then((res) => {
-      if(res.data.customers) {
+      if(usermail !== null) {
         this.setState({
           customers: res.data.customers,
           customermail: usermail
@@ -64,7 +64,7 @@ class Customer extends Component {
     var route1 = null;
     if(this.state.customermail !== null) { 
       // route1 = <Menu.Item as={Link} to="/customerproducts" name='products' active={activeItem === 'products'} onClick={this.handleItemClick}></Menu.Item>
-      route1 = <li><Link to="/customerproducts" style={{outline: 'none'}}>products</Link></li>
+      route1 = <li><Link to="/customerproducts" style={{outline: 'none'}}>Products</Link></li>
     }
     var route2 = <li><Link to="/CustRegister" style={{outline: 'none'}}>Register</Link></li>
  if(this.state.customermail !== null) {
@@ -74,7 +74,7 @@ class Customer extends Component {
 var route3 = <li><Link to="/CustLogin" style={{outline: 'none'}}>Login</Link></li>
 if(this.state.customermail !== null) { route3 = null }
     if(this.state.customermail !== null) {
-  var  route4 = <li><Link to="" onClick={this.onLogout} style={{outline: 'none'}}>logout</Link></li>
+  var  route4 = <li><Link to="" onClick={this.onLogout} style={{outline: 'none'}}>Logout</Link></li>
 //   <Menu.Menu position='right'>
 //     <Menu.Item
 //    name='logout'
@@ -83,7 +83,7 @@ if(this.state.customermail !== null) { route3 = null }
 //  </Menu.Menu>;
     }
  if(this.state.customermail !== null) {
-  var  route5 = <li><Link to="/CustOrders" style={{outline: 'none'}}>orders</Link></li>
+  var  route5 = <li><Link to="/CustOrders" style={{outline: 'none'}}>Orders</Link></li>
   // <Menu.Item as={Link} to="/CustOrders" name='orders'/>
 }
 // if(this.state.customermail !== '') {
