@@ -402,7 +402,7 @@ class CustomerProducts extends Component {
         if(this.state.customermail !== null || this.state.customermail === null) {
           var categories = <Menu stackable style={{marginTop: '50px'}}>
           <Menu.Item header>Sort By</Menu.Item>
-          <Menu.Item
+          {/* <Menu.Item
             name='Trending Now'
             active={activeItem === 'Trending Now'}
             onClick={this.onTrendingNow}
@@ -411,7 +411,7 @@ class CustomerProducts extends Component {
             name='Trending around you'
             active={activeItem === 'Trending around you'}
             onClick={this.onTrendingAroundYou}
-          />
+          /> */}
           <Menu.Item
             name='Recommended to you'
             active={activeItem === 'Recommended to you'}
@@ -421,9 +421,9 @@ class CustomerProducts extends Component {
           <Dropdown text='Filter' icon='filter' floating labeled button className='icon'>
           <Dropdown.Menu>
               <Dropdown.Header icon='tags' content='Filter Products'/>
-              <Dropdown.Item onClick={this.onDiscountChange}>Discount</Dropdown.Item>
+              {/* <Dropdown.Item onClick={this.onDiscountChange}>Discount</Dropdown.Item> */}
               <Dropdown.Item onClick={this.onDistanceChange}>Distance</Dropdown.Item>
-              <Dropdown.Item onClick={this.onPriceChange}>Price</Dropdown.Item>
+              {/* <Dropdown.Item onClick={this.onPriceChange}>Price</Dropdown.Item> */}
               <Dropdown.Item onClick={this.onRatingChange}>Rating</Dropdown.Item>
           </Dropdown.Menu>
           </Dropdown>
@@ -475,14 +475,14 @@ class CustomerProducts extends Component {
         <span className="icon-bar"></span>
       </button>
       <a className="navbar-brand" href="/" style={{width: '170px', fontSize: '35px', marginLeft: '15px', outline: 'none'}}>
-       Zerinth
+       Foodbe
       </a>
       <Search
       input={{ icon: 'search' }}
       style={{visibility: this.state.click ? 'visible' : 'hidden'}}
       loading={isLoading}
       onResultSelect={this.handleResultSelect}
-      placeholder="Search for Books"
+      placeholder="Search for Items"
       onSearchChange={_.debounce(this.handleSearchChange, 500, {
         leading: true,
       })}
@@ -510,7 +510,7 @@ class CustomerProducts extends Component {
         {this.state.customermail ? '' : <li><Link to="/CustLogin" style={{outline: 'none'}}>Login</Link></li>}
         {this.state.customermail ? '' : <li><Link to="/CustRegister" style={{outline: 'none'}}>Register</Link></li>}
         <li><Link to="/Customer" style={{outline: 'none'}}>Home</Link></li>
-        <li><Link to="/customerproducts" style={{outline: 'none'}}>Products</Link></li>
+        <li><Link to="/customerproducts" style={{outline: 'none'}}>Items</Link></li>
         {this.state.customermail ? <li><Link to="/CustOrders" style={{outline: 'none'}}>Orders</Link></li> : ''}
         {this.state.customermail ? <li id="logoutli"><Link to="" onClick={this.onLogout} style={{outline: 'none'}}>Logout</Link></li> : '' }
       </ul>
@@ -551,7 +551,7 @@ class CustomerProducts extends Component {
        />
 
       <SearchModal  
-       name='Search Books nearby'
+       name='Search Items nearby'
        modalOpen={this.state.searchmodalOpen}
        handleClose={() => this.searchhandleClose()}
        onchange={(event) => this.searchonchange(event)}

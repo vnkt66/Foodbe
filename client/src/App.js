@@ -70,8 +70,8 @@ function App() {
         <ul className="nav navbar-nav navbar-right">
           <li><Link to="/" style={{outline: 'none'}}>Home</Link></li>
           <li><Link to="/" style={{outline: 'none'}}>Company</Link></li>
-          <li><Link to="/Customer" style={{outline: 'none'}}>Customer</Link></li>
-          <li><Link to="/Seller" style={{outline: 'none'}}>Seller</Link></li>
+          <li><Link to="/Customer" style={{outline: 'none'}}>Volunteer</Link></li>
+          <li><Link to="/Seller" style={{outline: 'none'}}>Donate</Link></li>
         </ul>
       </div>
     </div>

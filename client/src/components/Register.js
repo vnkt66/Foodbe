@@ -14,18 +14,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://material-ui.com/">
-//         Zerinth
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//     </Typography>
-//   );
-// }
-
 const useStyles = makeStyles(theme => ({
   '@global': {
     body: {
@@ -65,7 +53,7 @@ export default function SignUp(props) {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Seller Sign up
+          Donator Sign up
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={1}>
@@ -82,17 +70,6 @@ export default function SignUp(props) {
                 onChange={props.onnamechange}
               />
             </Grid>
-            {/* <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid> */}
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -183,9 +160,6 @@ export default function SignUp(props) {
           </Grid>
         </form>
       </div>
-      {/* <Box mt={5}>
-        <Copyright />
-      </Box> */}
     </Container>
   );
 }

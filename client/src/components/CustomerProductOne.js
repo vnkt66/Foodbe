@@ -142,14 +142,14 @@ class CustomerProduct extends Component {
         <span className="icon-bar"></span>
       </button>
       <a className="navbar-brand" href="/" style={{width: '170px', fontSize: '35px', marginLeft: '15px', outline: 'none'}}>
-       Zerinth
+       Foodbe
       </a>
     </div>
 
     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul className="nav navbar-nav navbar-right">
         <li><Link to="/Customer" style={{outline: 'none'}}>Home</Link></li>
-        <li><Link to="/customerproducts" style={{outline: 'none'}}>Products</Link></li>
+        <li><Link to="/customerproducts" style={{outline: 'none'}}>Items</Link></li>
         {this.state.customermail ? <li><Link to="/CustOrders" style={{outline: 'none'}}>Orders</Link></li> : ''}
         {this.state.customermail ? <li><Link to="" onClick={this.onLogout} style={{outline: 'none'}}>Logout</Link></li> : ''}
       </ul>
@@ -157,7 +157,7 @@ class CustomerProduct extends Component {
   </div>
 </nav>
           <div style={{marginTop: '50px'}}>
-          <h1 style={{textAlign: 'center'}}>Product Information</h1>
+          <h1 style={{textAlign: 'center'}}>Item Information</h1>
           <Grid columns='equal'>
           <Grid.Column></Grid.Column>
           <Grid.Column width={12}>
@@ -170,11 +170,11 @@ class CustomerProduct extends Component {
              label={{ as: 'a', corner: 'left', icon: 'shop' }} 
              onClick={this.onImageClicked}/>
             <Item.Content>
-               <Item.Header as='a'>Name: {this.state.product.name}</Item.Header>
+               <Item.Header as='a'>ItemName: {this.state.product.name}</Item.Header>
                <Item.Description>
-                  <p>Description: {this.state.product.description}</p>
-               <p>Price: {this.state.product.price}₹</p>
-               <p>Discount: {this.state.product.discount}₹</p>
+               <p>ItemDescription: {this.state.product.description}</p>
+               {/* <p>Price: {this.state.product.price}₹</p>
+               <p>Discount: {this.state.product.discount}₹</p> */}
                <p>Quantity: {this.state.product.quantity}</p>
                {/* <p>Quantity:
                <Form.Control type="number" placeholder="Quantity" min="1" onChange={this.onQuantityChange} max={this.state.product.quantity}/>
@@ -187,7 +187,7 @@ class CustomerProduct extends Component {
           <Grid.Column></Grid.Column>
           </Grid>
           <hr/>
-          <h3>Seller Information:</h3>
+          <h3>Donator Information:</h3>
           <Grid columns='equal'>
           <Grid.Column width={7}>
           <Item.Group>
@@ -195,7 +195,7 @@ class CustomerProduct extends Component {
             <Image src={this.state.product.sellerimage} size='tiny'/>
             <Item.Content>
                <Item.Description>
-                  <h5>Sellername: {this.state.product.sellername}</h5>
+                  <h5>Name: {this.state.product.sellername}</h5>
                   <p/>
                   <h6>Contact Details:</h6>
                </Item.Description>    

@@ -37,9 +37,9 @@ app.use(flash());
 var session = require('express-session'); 
 mongoose.set('useCreateIndex', true);
 
-var url = "mongodb+srv://venkatitsme6:LaasyaSrihan@portalcluster-rnpcq.mongodb.net/test?retryWrites=true&w=majority" || "mongodb://localhost/portal"
+var url = "mongodb+srv://venkatitsme6:LaasyaSrihan@portalcluster-rnpcq.mongodb.net/test?retryWrites=true&w=majority" || "mongodb://localhost/foodbe"
 
-mongoose.connect(url, { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/foodbe", { useNewUrlParser: true });
 const connection = mongoose.connection;
 
 connection.once('open', () => {

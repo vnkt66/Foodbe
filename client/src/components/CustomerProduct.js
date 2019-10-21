@@ -189,13 +189,12 @@ class CustomerProduct extends Component {
           <Container>
           <Row className="justify-content-md-center">
           <Col xs={12} sm={4} md={4} lg={4} style={{paddingRight: '10px'}}>
-          <h3>Product Details:</h3>
+          <h3>Item Details:</h3>
           <Image src={this.state.product.picture} style={{width: '100%'}}/>
           <ListGroupItem>Name: {this.state.product.name}</ListGroupItem>
-          <ListGroupItem>Description: {this.state.product.description}</ListGroupItem>
-          <ListGroupItem>Price: {this.state.product.price - this.state.product.discount}</ListGroupItem>
+          <ListGroupItem>ItemDescription: {this.state.product.description}</ListGroupItem>
+          {/* <ListGroupItem>Price: {this.state.product.price - this.state.product.discount}</ListGroupItem> */}
           <ListGroupItem>
-            {/* <input type="number" name="quantity" min="1" max={this.state.product.quantity} /> */}
             <Form.Control type="number" placeholder="Quantity" min="1" onChange={this.onQuantityChange} max={this.state.product.quantity}/>
           </ListGroupItem>
           </Col>
@@ -275,14 +274,14 @@ class CustomerProduct extends Component {
         <span className="icon-bar"></span>
       </button>
       <a className="navbar-brand" href="/" style={{width: '170px', fontSize: '35px', marginLeft: '15px', outline: 'none'}}>
-       Zerinth
+       Foodbe
       </a>
     </div>
 
     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul className="nav navbar-nav navbar-right">
         <li><Link to="/Customer" style={{outline: 'none'}}>Home</Link></li>
-        <li><Link to="/customerproducts" style={{outline: 'none'}}>Products</Link></li>
+        <li><Link to="/customerproducts" style={{outline: 'none'}}>Items</Link></li>
         <li><Link to="/CustOrders" style={{outline: 'none'}}>Orders</Link></li>
         <li><Link to="" onClick={this.onLogout} style={{outline: 'none'}}>Logout</Link></li>
       </ul>

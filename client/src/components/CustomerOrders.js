@@ -74,13 +74,13 @@ class CustomerOrders extends Component {
              {/* <List.Header>{order.name}</List.Header> */}
              <List.Description>
              You have ordered { order.name }{' '}
-            with the price of <b>{ order.price - order.discount}₹</b>.
+            {/* with the price of <b>{ order.price - order.discount}₹</b>. */}
              </List.Description>
              <Item.Meta>
               <span className='quantity'>Quantity: {order.quantity}</span>
              </Item.Meta>
              <List.Item>
-              Rate Me 
+              Rate the Item
              <Button 
               circular 
               animated='vertical' 
@@ -103,7 +103,7 @@ class CustomerOrders extends Component {
              <div>
              <TransitionablePortal onClose={this.handleClose} open={open}>
                <Segment style={{ left: '10%', position: 'fixed', top: '30%', zIndex: 1000 }}>
-               <Header>Seller Details</Header>
+               <Header>Donator Details</Header>
                <p>{order.selleremail}</p>
                <p>{order.sellerphone}</p>
                </Segment>
@@ -136,14 +136,14 @@ class CustomerOrders extends Component {
         <span className="icon-bar"></span>
       </button>
       <a className="navbar-brand" href="/" style={{width: '170px', fontSize: '35px', marginLeft: '15px', outline: 'none'}}>
-       Zerinth
+       Foodbe
       </a>
     </div>
 
     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul className="nav navbar-nav navbar-right">
         <li><Link to="/Customer" style={{outline: 'none'}}>Home</Link></li>
-        <li><Link to="/customerproducts" style={{outline: 'none'}}>Products</Link></li>
+        <li><Link to="/customerproducts" style={{outline: 'none'}}>Items</Link></li>
         <li><Link to="/CustOrders" style={{outline: 'none'}}>Orders</Link></li>
         <li><Link to="" onClick={this.onLogout} style={{outline: 'none'}}>Logout</Link></li>
       </ul>

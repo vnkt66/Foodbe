@@ -116,7 +116,7 @@ render() {
         <span className="icon-bar"></span>
       </button>
       <a className="navbar-brand" href="/" style={{width: '170px', fontSize: '35px', marginLeft: '15px', outline: 'none'}}>
-       Zerinth
+        Foodbe
       </a>
     </div>
 

@@ -74,7 +74,7 @@ class Seller extends Component {
     // const { activeItem } = this.state;
     var route1 = null;
     if(this.state.sellermail !== null) { 
-      route1 = <li><Link to="/selleredit" style={{outline: 'none'}}>Products</Link></li>
+      route1 = <li><Link to="/selleredit" style={{outline: 'none'}}>Items</Link></li>
     }
     var route2 = <li><Link to="/SellRegister" style={{outline: 'none'}}>Register</Link></li>
 //     <div>
@@ -98,7 +98,7 @@ if(this.state.sellermail !== null) { route3 = null }
       var  route5 = <li><Link to="/SellOrders" style={{outline: 'none'}}>Orders</Link></li>
     }
     if(this.state.sellermail !== null) {
-      var  route6 = <li><Link to="/SellerAdd" style={{outline: 'none'}}>Add Product</Link></li>
+      var  route6 = <li><Link to="/SellerAdd" style={{outline: 'none'}}>Add Item</Link></li>
     //   <Menu.Item
     //   name='addproduct'
     //   onClick={this.onAddProducts}
@@ -136,7 +136,7 @@ if(this.state.sellermail !== null) { route3 = null }
         <span className="icon-bar"></span>
       </button>
       <a className="navbar-brand" href="/" style={{width: '170px', fontSize: '35px', marginLeft: '15px', outline: 'none'}}>
-       Zerinth
+       Foodbe
       </a>
     </div>
 
@@ -155,7 +155,7 @@ if(this.state.sellermail !== null) { route3 = null }
 </nav>
 
         <Segment style={{marginTop: '50px'}}>
-        <h1 style={{textAlign: "center"}}>Our Sellers</h1>
+        <h1 style={{textAlign: "center"}}>Our Donators</h1>
         <Item.Group>
           {/* <img src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' alt="customer"/> */}
           { sellers }

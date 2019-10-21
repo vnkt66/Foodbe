@@ -111,15 +111,15 @@ class SellerEditHome extends Component {
         <span className="icon-bar"></span>
       </button>
       <a className="navbar-brand" href="/" style={{width: '170px', fontSize: '35px', marginLeft: '15px', outline: 'none'}}>
-       Zerinth
+       Foodbe
       </a>
     </div>
 
     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul className="nav navbar-nav navbar-right">
         <li><Link to="/Seller" style={{outline: 'none'}}>Home</Link></li>
-        <li><Link to="/selleredit" style={{outline: 'none'}}>Products</Link></li>
-        <li><Link to="SellerAdd" style={{outline: 'none'}}>Add Product</Link></li>
+        <li><Link to="/selleredit" style={{outline: 'none'}}>Items</Link></li>
+        <li><Link to="SellerAdd" style={{outline: 'none'}}>Add Item</Link></li>
         <li><Link to="/SellOrders" style={{outline: 'none'}}>Orders</Link></li>
         <li id="logoutli"><Link to="" onClick={this.onLogout} style={{outline: 'none'}}>Logout</Link></li>
       </ul>

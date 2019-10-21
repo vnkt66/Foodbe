@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ListGroup, ListGroupItem, Image, Col, Button, Badge } from 'react-bootstrap';
+import { ListGroup, ListGroupItem, Image, Col, Button } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import './SellerProduct.css';
 
@@ -19,9 +19,9 @@ class SellerProduct extends Component {
             <ListGroupItem>
               <Image src={this.props.picture} style={{width: '100%', height: '100%'}}/>
             </ListGroupItem>
-            <ListGroupItem>Name: {this.props.name}</ListGroupItem>
-            <ListGroupItem>Description: {this.props.description}</ListGroupItem>
-            <ListGroupItem>Price: {this.state.price}₹<Badge variant="secondary">AddedDiscount:{this.props.discount}</Badge></ListGroupItem>
+            <ListGroupItem>ItemName: {this.props.name}</ListGroupItem>
+            <ListGroupItem>ItemDescription: {this.props.description}</ListGroupItem>
+            {/* <ListGroupItem>Price: {this.state.price}₹<Badge variant="secondary">AddedDiscount:{this.props.discount}</Badge></ListGroupItem> */}
             <ListGroupItem>Quantity: {this.props.quantity}</ListGroupItem>
             <ListGroupItem>
             <Button 

@@ -32,22 +32,22 @@ class Home extends React.Component {
     products: [],
     allproducts: [],
     productsslider: [{
-      name: 'Books Under 199₹',
+      name: 'Item1Quote',
       image: 'http://bgfons.com/uploads/books/books_texture3031.jpg',
-      quoteimage: 'https://images.gr-assets.com/authors/1362814142p2/3389.jpg',
-      quote: 'Good books don\'t give up all their secrets at once.'
+      quoteimage: 'https://images.gr-assets.com/authors/1356810912p2/5810891.jpg',
+      quote: 'There are people in the world so hungry, that God cannot appear to them except in the form of bread.'
     },
     {
-      name: 'Books Under 499₹',
+      name: 'Item2Quote',
       image: 'http://bgfons.com/uploads/books/books_texture3031.jpg',
-      quoteimage: 'https://images.gr-assets.com/authors/1322103868p2/1244.jpg',
-      quote: 'Good friends, good books, and a sleepy conscience: this is the ideal life.'
+      quoteimage: 'https://images.gr-assets.com/authors/1419596619p2/6765.jpg',
+      quote: 'One cannot think well, love well, sleep well, if one has not dined well.'
     },
     {
-      name: 'Books Under 999₹',
+      name: 'Item3Quote',
       image: 'http://bgfons.com/uploads/books/books_texture3031.jpg',
-      quoteimage: 'https://images.gr-assets.com/authors/1243291789p2/11563.jpg',
-      quote: 'There are worse crimes than burning books. One of them is not reading them.'
+      quoteimage: 'https://images.gr-assets.com/authors/1564399522p2/656983.jpg',
+      quote: 'If more of us valued food and cheer and song above hoarded gold, it would be a merrier world.'
     }
   ],
   search: false,
@@ -167,14 +167,14 @@ class Home extends React.Component {
         <span className="icon-bar"></span>
       </button>
       <a className="navbar-brand" href="/" style={{width: '170px', fontSize: '35px', marginLeft: '15px', outline: 'none'}}>
-       Zerinth
+       Foodbe
       </a>
       <Search
       input={{ icon: 'search' }}
       style={{visibility: this.state.search ? 'visible' : 'hidden'}}
       loading={isLoading}
       onResultSelect={this.handleResultSelect}
-      placeholder="Search for Books"
+      placeholder="Search for Items"
       onSearchChange={_.debounce(this.handleSearchChange, 500, {
         leading: true,
       })}
@@ -214,8 +214,8 @@ class Home extends React.Component {
         </li> */}
         {/* <li><Link to="/" style={{outline: 'none'}}>Home</Link></li>
         <li><Link to="/" style={{outline: 'none'}}>Company</Link></li> */}
-        <li><Link to="/Customer" style={{outline: 'none'}}>Customer</Link></li>
-        <li><Link to="/Seller" style={{outline: 'none'}}>Seller</Link></li>
+        <li><Link to="/Customer" style={{outline: 'none'}}>Volunteer</Link></li>
+        <li><Link to="/Seller" style={{outline: 'none'}}>Donate</Link></li>
       </ul>
     </div>
   </div>
@@ -239,7 +239,7 @@ class Home extends React.Component {
       <Segment>
       <Grid>
       <Grid.Column floated='left' width={5}>
-       <h3>Books</h3>
+       <h3>Items</h3>
       </Grid.Column>
       <Grid.Column floated='right' width={2}>
       <Button primary id="view" onClick={() => this.props.history.push('/customerproducts')}>View All</Button>

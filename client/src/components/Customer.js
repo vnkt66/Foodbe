@@ -64,7 +64,7 @@ class Customer extends Component {
     var route1 = null;
     if(this.state.customermail !== null) { 
       // route1 = <Menu.Item as={Link} to="/customerproducts" name='products' active={activeItem === 'products'} onClick={this.handleItemClick}></Menu.Item>
-      route1 = <li><Link to="/customerproducts" style={{outline: 'none'}}>Products</Link></li>
+      route1 = <li><Link to="/customerproducts" style={{outline: 'none'}}>Items</Link></li>
     }
     var route2 = <li><Link to="/CustRegister" style={{outline: 'none'}}>Register</Link></li>
  if(this.state.customermail !== null) {
@@ -123,7 +123,7 @@ if(this.state.customermail !== null) { route3 = null }
         <span className="icon-bar"></span>
       </button>
       <a className="navbar-brand" href="/" style={{width: '170px', fontSize: '35px', marginLeft: '15px', outline: 'none'}}>
-       Zerinth
+       Foodbe
       </a>
     </div>
 
@@ -140,7 +140,7 @@ if(this.state.customermail !== null) { route3 = null }
   </div>
 </nav>
         <Segment style={{marginTop: '50px'}}>
-        <h3 style={{textAlign: "center"}}>Our Happy Customers</h3>
+        <h3 style={{textAlign: "center"}}>Our Volunteers</h3>
         <Item.Group>
           {/* <img src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' alt="customer"/> */}
           { customers }
