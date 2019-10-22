@@ -272,7 +272,6 @@ class Home extends React.Component {
         }}
       />
       <h5 style={{textAlign: 'center', margin: '0 0'}}>{item.name}</h5>
-      <h4 style={{textAlign: 'center', margin: '0 0', color: 'green'}}>₹{item.price}</h4>
       </Container>
     )}
   </ItemsCarousel>
