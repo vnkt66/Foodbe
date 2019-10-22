@@ -608,7 +608,7 @@ router.post('/custregister', upload.single('file'), function(req, res, next) {
                    }
                }); 
               
-              var mailOptions = { from: 'rockinsal6@gmail.com', to: client.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttps:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
+              var mailOptions = { from: 'Foodbe', to: client.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttps:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
               transporter.sendMail(mailOptions, function (err) {
                   if (err) { return res.status(500).send({ msg: err.message }); }
                   console.log('Verifying');
@@ -695,7 +695,7 @@ router.post('/sellregister', upload.single('file'), (req, res) => {
                            pass: 'Laasyasrihan'
                        }
                    }); 
-                var mailOptions = { from: 'rockinsal6@gmail.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttps:\/\/' + req.headers.host + '\/sellerconfirmation\/' + token.token + '.\n' };
+                var mailOptions = { from: 'Foodbe', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttps:\/\/' + req.headers.host + '\/sellerconfirmation\/' + token.token + '.\n' };
                 transporter.sendMail(mailOptions, function (err) {
                     if (err) { return res.status(500).send({ msg: err.message }); }
                     console.log('Verifying');
@@ -845,7 +845,7 @@ router.post('/sellerresend', function (req, res) {
                        pass: 'Laasyasrihan'
                    }
                }); 
-            var mailOptions = { from: 'rockinsal6@gmail.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
+            var mailOptions = { from: 'Foodbe', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
             transporter.sendMail(mailOptions, function (err) {
                 if (err) { return res.status(500).send({ msg: err.message }); }
                 res.status(200).send('A verification email has been sent to ' + user.email + '.');
@@ -895,7 +895,7 @@ router.post('/forgot', function (req, res) {
                        pass: 'Laasyasrihan'
                    }
                }); 
-            var mailOptions = { from: 'rockinsal6@gmail.com', to: user.email, subject: 'Password Reset', text: 'Hello,\n\n' + 'Please click this link to reset the password: \nhttp:\/\/' + req.headers.host + '\/reset\/' + token.token + '.\n' };
+            var mailOptions = { from: 'Foodbe', to: user.email, subject: 'Password Reset', text: 'Hello,\n\n' + 'Please click this link to reset the password: \nhttp:\/\/' + req.headers.host + '\/reset\/' + token.token + '.\n' };
             transporter.sendMail(mailOptions, function (err) {
                 if (err) { 
                     // res.redirect('/reset');
@@ -946,7 +946,7 @@ router.post('/sellerforgot', function (req, res) {
                        pass: 'Laasyasrihan'
                    }
                }); 
-            var mailOptions = { from: 'rockinsal6@gmail.com', to: user.email, subject: 'Password Reset', text: 'Hello,\n\n' + 'Please click this link to reset the password: \nhttp:\/\/' + req.headers.host + '\/sellerreset\/' + token.token + '.\n' };
+            var mailOptions = { from: 'Foodbe', to: user.email, subject: 'Password Reset', text: 'Hello,\n\n' + 'Please click this link to reset the password: \nhttp:\/\/' + req.headers.host + '\/sellerreset\/' + token.token + '.\n' };
             transporter.sendMail(mailOptions, function (err) {
                 if (err) { 
                     res.status(401).send('A Password reset has not been sent to ' + user.email + '.');
