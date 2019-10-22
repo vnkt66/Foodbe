@@ -418,16 +418,16 @@ router.post('/checkout/:id', function(req, res) {
    var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-           user: 'zshopping1440@gmail.com',
-           pass: 'zshopping11082019144'
+           user: 'rockinsal6@gmail.com',
+           pass: 'Laasyasrihan'
        }
    }); 
-   var mailOptions = { from: 'zshopping1440@gmail.com', to:req.body.clientemail, subject: 'Your Order Details', text: 'Hello' + ',\n\n' + ' You have Ordered ' + req.body.product.name + ' with the price ' + req.body.product.price + '₹' +' and the discount is ' + req.body.product.discount + '₹' + '\n\nYour Order will be delivered within 3-5 business days, Please Carry the cash with you.' };
+   var mailOptions = { from: 'rockinsal6@gmail.com', to:req.body.clientemail, subject: 'Your Order Details', text: 'Hello' + ',\n\n' + ' You have Ordered ' + req.body.product.name };
    transporter.sendMail(mailOptions, function (err) {
      if (err) { return res.status(500).send({ msg: err.message }); }
      res.status(200).send('An email has been sent to customer with order details' + req.body.clientemail + '.');
 });
-var sellermailOptions = { from: 'zshopping1440@gmail.com', to:req.body.selleremail, subject: 'Your Customer Order Details', text: 'Hello,\n\n' + ' Customer from ' + req.body.clientaddress + ' Ordered ' + req.body.product.name + ' price is ' + req.body.product.price + '₹' + ' with discount of ' + req.body.product.discount + '₹' +'\n\n Customer Contact no is' + req.body.clientphone };
+var sellermailOptions = { from: 'rockinsal6@gmail.com', to:req.body.selleremail, subject: 'Customer Order Details', text: 'Hello,\n\n' + ' Customer from ' + req.body.clientaddress + ' Ordered ' + req.body.product.name + '\n\n Customer Contact no is' + req.body.clientphone };
    transporter.sendMail(sellermailOptions, function (err) {
      if (err) { return res.status(500).send({ msg: err.message }); }
      res.status(200).send('An email has been sent to seller with mail id' + req.body.selleremail + '.');
@@ -603,12 +603,12 @@ router.post('/custregister', upload.single('file'), function(req, res, next) {
             var transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                       user: 'zshopping1440@gmail.com',
-                       pass: 'zshopping11082019144'
+                       user: 'rockinsal6@gmail.com',
+                       pass: 'Laasyasrihan'
                    }
                }); 
               
-              var mailOptions = { from: 'zshopping1440@gmail.com', to: client.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttps:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
+              var mailOptions = { from: 'rockinsal6@gmail.com', to: client.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttps:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
               transporter.sendMail(mailOptions, function (err) {
                   if (err) { return res.status(500).send({ msg: err.message }); }
                   console.log('Verifying');
@@ -691,11 +691,11 @@ router.post('/sellregister', upload.single('file'), (req, res) => {
                 var transporter = nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
-                           user: 'zshopping1440@gmail.com',
-                           pass: 'zshopping11082019144'
+                           user: 'rockinsal6@gmail.com',
+                           pass: 'Laasyasrihan'
                        }
                    }); 
-                var mailOptions = { from: 'zshopping1440@gmail.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttps:\/\/' + req.headers.host + '\/sellerconfirmation\/' + token.token + '.\n' };
+                var mailOptions = { from: 'rockinsal6@gmail.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttps:\/\/' + req.headers.host + '\/sellerconfirmation\/' + token.token + '.\n' };
                 transporter.sendMail(mailOptions, function (err) {
                     if (err) { return res.status(500).send({ msg: err.message }); }
                     console.log('Verifying');
@@ -806,11 +806,11 @@ router.post('/resend', function (req, res) {
             var transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                       user: 'zshopping1440@gmail.com',
-                       pass: 'zshopping11082019144'
+                       user: 'rockinsal6@gmail.com',
+                       pass: 'Laasyasrihan'
                    }
                }); 
-            var mailOptions = { from: 'zshopping1440@gmail.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
+            var mailOptions = { from: 'rockinsal6@gmail.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
             transporter.sendMail(mailOptions, function (err) {
                 if (err) { return res.status(500).send({ msg: err.message }); }
                 res.status(200).send('A verification email has been sent to ' + user.email + '.');
@@ -841,11 +841,11 @@ router.post('/sellerresend', function (req, res) {
             var transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                       user: 'zshopping1440@gmail.com',
-                       pass: 'zshopping11082019144'
+                       user: 'rockinsal6@gmail.com',
+                       pass: 'Laasyasrihan'
                    }
                }); 
-            var mailOptions = { from: 'zshopping1440@gmail.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
+            var mailOptions = { from: 'rockinsal6@gmail.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
             transporter.sendMail(mailOptions, function (err) {
                 if (err) { return res.status(500).send({ msg: err.message }); }
                 res.status(200).send('A verification email has been sent to ' + user.email + '.');
@@ -891,11 +891,11 @@ router.post('/forgot', function (req, res) {
             var transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                       user: 'zshopping1440@gmail.com',
-                       pass: 'zshopping11082019144'
+                       user: 'rockinsal6@gmail.com',
+                       pass: 'Laasyasrihan'
                    }
                }); 
-            var mailOptions = { from: 'zshopping1440@gmail.com', to: user.email, subject: 'Password Reset', text: 'Hello,\n\n' + 'Please click this link to reset the password: \nhttp:\/\/' + req.headers.host + '\/reset\/' + token.token + '.\n' };
+            var mailOptions = { from: 'rockinsal6@gmail.com', to: user.email, subject: 'Password Reset', text: 'Hello,\n\n' + 'Please click this link to reset the password: \nhttp:\/\/' + req.headers.host + '\/reset\/' + token.token + '.\n' };
             transporter.sendMail(mailOptions, function (err) {
                 if (err) { 
                     // res.redirect('/reset');
@@ -942,15 +942,13 @@ router.post('/sellerforgot', function (req, res) {
             var transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                       user: 'zshopping1440@gmail.com',
-                       pass: 'zshopping11082019144'
+                       user: 'rockinsal6@gmail.com',
+                       pass: 'Laasyasrihan'
                    }
                }); 
-            var mailOptions = { from: 'zshopping1440@gmail.com', to: user.email, subject: 'Password Reset', text: 'Hello,\n\n' + 'Please click this link to reset the password: \nhttp:\/\/' + req.headers.host + '\/sellerreset\/' + token.token + '.\n' };
+            var mailOptions = { from: 'rockinsal6@gmail.com', to: user.email, subject: 'Password Reset', text: 'Hello,\n\n' + 'Please click this link to reset the password: \nhttp:\/\/' + req.headers.host + '\/sellerreset\/' + token.token + '.\n' };
             transporter.sendMail(mailOptions, function (err) {
                 if (err) { 
-                    // res.redirect('/reset');
-                    // res.redirect('http://localhost:3000/CustForgot');
                     res.status(401).send('A Password reset has not been sent to ' + user.email + '.');
                  }
                  var details = {

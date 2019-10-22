@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
 import { ListGroup, ListGroupItem, Col, Image, Button, Badge } from 'react-bootstrap';
 import { Rating } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
@@ -14,11 +13,6 @@ class Product extends Component {
         this.props.history.push('/customerproduct/' + this.props.name);
     }
 
-    // handleRate = (e, { rating, maxRating }) => {
-    //     console.log(this.props.id);
-    //     this.setState({ rating, maxRating })
-    // }
-
     render() {
         return (
 
@@ -27,10 +21,9 @@ class Product extends Component {
             <ListGroupItem>
              <Image src={this.props.picture} style={{width: '100%', height: '100%'}}/>
             </ListGroupItem>
-            <ListGroupItem>Name: {this.props.name}</ListGroupItem>
-            <ListGroupItem>Description: {this.props.description}</ListGroupItem>
+            <ListGroupItem>ItemName: {this.props.name}</ListGroupItem>
+            <ListGroupItem>ItemDescription: {this.props.description}</ListGroupItem>
             <ListGroupItem>Quantity: {this.props.quantity}</ListGroupItem>
-            <ListGroupItem>Price: {this.state.price}₹<Badge variant="secondary">Discount:{this.props.discount}</Badge></ListGroupItem>
             <ListGroupItem>Status: {this.props.status}</ListGroupItem>
             <ListGroupItem>Rating:
             <Rating 
@@ -44,7 +37,7 @@ class Product extends Component {
                  disabled={!this.props.buy}
                  onClick={this.onProduct}
                  variant="primary" 
-                 type="submit">Checkout</Button>
+                 type="submit">Send Query</Button>
             </ListGroupItem>
             </Col>
             </ListGroup>

@@ -5,10 +5,7 @@ import PropTypes from 'prop-types'
 import _ from 'lodash';
 import { Menu, Search, Dropdown, Icon } from 'semantic-ui-react';
 import Product from './Product';
-// import toast from 'toasted-notes' 
-// import 'toasted-notes/src/styles.css';
 import './CustomerProducts.css';
-// import './PriceRangeSlider.css';
 import './PriceModal.css';
 import PriceModal from './PriceModal';
 import RatingModal from './RatingModal';
@@ -40,7 +37,6 @@ class CustomerProducts extends Component {
         searchmodalOpen: false,
         values: [0, 0],
         discountvalue: [0, 0],
-        // ratingvalue: [0, 0],
         ratingvalue: 0,
         searchvalue: '',
         pricevaluestart: '',
@@ -51,14 +47,10 @@ class CustomerProducts extends Component {
         ratingvalueend: ''
     }
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
-    
-    // handleOpen = () => this.setState({ modalOpen: true });
 
     handleClose = () => {
     let changedproducts = [...this.state.products];
-  //   changedproducts.sort(function(a, b){
-  //     return a.price-b.price
-  // })
+
    var k = changedproducts.filter((product) => {
     console.log(product.price > this.state.pricevaluestart);
     console.log(product.price < this.state.pricevalueend);
@@ -72,9 +64,6 @@ class CustomerProducts extends Component {
 
     discounthandleClose = () => {
       let changedproducts = [...this.state.products];
-    //   changedproducts.sort(function(a, b){
-    //     return a.price-b.price
-    // })
      var k = changedproducts.filter((product) => {
       console.log(product.discount > this.state.discountvaluestart);
       console.log(product.discount < this.state.discountvalueend);
@@ -88,13 +77,7 @@ class CustomerProducts extends Component {
 
       ratinghandleClose = () => {
         let changedproducts = [...this.state.products];
-      //   changedproducts.sort(function(a, b){
-      //     return a.price-b.price
-      // })
        var k = changedproducts.filter((product) => {
-        // console.log(product.rating > this.state.ratingvaluestart);
-        // console.log(product.rating < this.state.ratingvalueend);
-        // return (product.rating >= this.state.ratingvaluestart && product.rating <= this.state.ratingvalueend )
         return product.rating <= this.state.ratingvalue
        })
        this.setState({
@@ -104,7 +87,6 @@ class CustomerProducts extends Component {
         }
 
         searchonchange = (event) => {
-          // this.state.searchvalue = event.target.value;
           console.log(event.target.value);
           this.setState({
             searchvalue: event.target.value
@@ -112,26 +94,6 @@ class CustomerProducts extends Component {
         }
 
         searchhandleClose = () => {
-        //   let changedproducts = [...this.state.products];
-        // //   changedproducts.sort(function(a, b){
-        // //     return a.price-b.price
-        // // })
-        //  var k = changedproducts.filter((product) => {
-        //   console.log(product.rating > this.state.ratingvaluestart);
-        //   console.log(product.rating < this.state.ratingvalueend);
-        //   return (product.rating >= this.state.ratingvaluestart && product.rating <= this.state.ratingvalueend )
-        //  })
-      //   function escapeRegex(text) {
-      //     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-      // };
-      // // let userplace = localStorage.getItem('userplace');
-      // // console.log(userplace);
-      // const regex = new RegExp(escapeRegex(this.state.searchvalue), 'gi');
-      // console.log(regex);
-      // var changedproducts = this.state.products.filter((product) => {
-      //   console.log(escapeRegex(product.sellerplace));
-      //   return new RegExp(escapeRegex(product.sellerplace), 'gi') === regex;
-      // })
       axios.get('/portal/place', {
         params: {
           search: this.state.searchvalue
@@ -142,10 +104,6 @@ class CustomerProducts extends Component {
           searchmodalOpen: false
         })
       })
-        //  this.setState({
-        //    products: k,
-        //    ratingmodalOpen: false
-        //  })
           }
 
     handleChange = (event, newValue) => {
@@ -184,13 +142,7 @@ class CustomerProducts extends Component {
     this.setState({
       ratingvalue: newValue
     })
-    //  this.setState({
-    //    ratingvalue: newValue,
-    //    ratingvaluestart: newValue[0],
-    //    ratingvalueend: newValue[1]
-    //  }, () => {
-    //    console.log(this.state.ratingvalue);
-    //  });
+    
     };
 
     onInputChange = (event) => {
@@ -219,46 +171,19 @@ class CustomerProducts extends Component {
   }
 
   onDiscountChange = () => {
-  //   let changedproducts = [...this.state.products];
-  //   changedproducts.sort(function(a, b){
-  //     return b.discount-a.discount
-  // })
-  //  this.setState({
-  //    products: changedproducts
-  //  })
+  
   this.setState({
     discountmodalOpen: true
   })
   }
 
   onPriceChange = () => {
-  //   let changedproducts = [...this.state.products];
-  //   changedproducts.sort(function(a, b){
-  //     return a.price-b.price
-  // })
-  //  this.setState({
-  //    products: changedproducts
-  //  })
   this.setState({
      modalOpen: true
   })
   }
 
-
-  // handleDismiss = () => {
-  //   this.setState({ visible: false })
-  // }
-
   onDistanceChange = () => {
-  //   function escapeRegex(text) {
-  //     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-  // };
-  // let userplace = localStorage.getItem('userplace');
-  // console.log(userplace);
-  // const regex = new RegExp(escapeRegex(userplace), 'gi');
-  // var changedproducts = this.state.products.filter((product) => {
-  //   return new RegExp(escapeRegex(product.sellerplace), 'gi') === regex;
-  // })
     this.setState({
       searchmodalOpen: true
     })
@@ -266,13 +191,6 @@ class CustomerProducts extends Component {
   }
 
   onRatingChange = () => {
-  //   let changedproducts = [...this.state.products];
-  //   changedproducts.sort(function(a, b){
-  //     return b.rating-a.rating
-  //  })
-  //  this.setState({
-  //    products: changedproducts
-  //  })
   this.setState({
     ratingmodalOpen: true
  })
@@ -284,10 +202,6 @@ class CustomerProducts extends Component {
         this.setState({
           customermail: usermail
         })
-        // if(this.state.customermail === null) {
-        //   this.props.history.push('/CustLogin');
-        // }
-        // axios.get('http://localhost:4000/customerproducts/' + this.props.match.params.id)
         axios.get('/portal/customerproducts')
         .then((res) => {
           var l = res.data.products.map((product) => {
@@ -300,22 +214,11 @@ class CustomerProducts extends Component {
           })
           source = l;
             console.log(res);
-            // if(res.data.msg) {
-            //     this.props.history.push('/CustLogin');
-            // }
-            // if(res.data.details.customermail === '') {
-            //     this.props.history.push('/CustLogin');
-            // }
-            // if(!res.data.msg) {
-              // if(this.state.customermail === null) {
-              //   this.props.history.push('/CustLogin');
-              // }
               if(this.state.customermail === null || this.state.customermail !== null) {
                 this.setState({
                   products: res.data.products
               })
               }
-            // })
       })
     }
 
@@ -339,10 +242,6 @@ class CustomerProducts extends Component {
   }
 
     onLogout = () => {
-            // toast.notify('Hope to see you again Bye!!', {
-            //    duration: 2000
-            // });
-        // axios.post('http://localhost:4000/portal/logout').then((res) => {
             localStorage.removeItem('username');
             localStorage.removeItem('expirationDate');
             localStorage.removeItem('token');
@@ -351,7 +250,6 @@ class CustomerProducts extends Component {
             if(username === null) {
               this.props.history.push('/Customer');
             }
-        // })
       }
 
     onTrendingNow = () => {
@@ -449,22 +347,6 @@ class CustomerProducts extends Component {
         return (
            <div>
            <div>
-          {/* <Menu pointing secondary>
-            <Menu.Item as={Link} fitted='horizontally' to="/Customer" name='home' onClick={this.handleItemClick}></Menu.Item>
-            <Menu.Item as={Link} fitted='horizontally' to="/customerproducts" name='products' active={activeItem === 'products'} onClick={this.handleItemClick}></Menu.Item>
-            <Menu.Item as={Link} fitted='horizontally' to="/CustOrders" name='orders' onClick={this.handleItemClick}></Menu.Item>
-          <Menu.Menu position='right'>
-          <Menu.Item id="search" fitted='horizontally'>
-               <Input size='mini' icon='search' name="search" onChange={this.onInputChange} placeholder='Search books' onKeyDown={this.onkeydown}/>
-            </Menu.Item>
-            <Menu.Item
-              fitted='horizontally'
-              name='logout'
-              style={{ cursor: 'pointer'}}
-              onClick={this.onLogout}
-            />
-          </Menu.Menu>
-        </Menu> */}
         <nav className="navbar navbar-inverse navbar-fixed-top">
   <div className="container-fluid">
     <div className="navbar-header">
