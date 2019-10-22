@@ -146,9 +146,6 @@ class Home extends React.Component {
          <Card.Description style={{fontSize: '17px'}}>
            Description: {item.description}
          </Card.Description>
-         <Card.Description style={{color: 'green'}}>
-           Price: {item.price}
-         </Card.Description>
        </Card.Content>
        </Card>
       )
