@@ -6,7 +6,7 @@ const path = require('path');
 // const Sendgrid = require('nodemailer-sendgrid');
 var router  = express.Router();
 // const axios = require('axios');
-// const client = require('twilio')('AC8339309fd198b543a248ccdda7c91607', '812ac132df08199c6c485cff42b5e5b8');
+// const client = require('twilio')('ACe7b8d741e6c966bdde85c12ab45a61bf', '3c2a383bc1be9a61eabf4f8392ec4888');
 const cors  = require('cors');
 const crypto = require('crypto');
 const PORT = process.env.PORT || 4000;
@@ -340,6 +340,13 @@ router.post('/selleraddproduct', upload.single('file'), (req, res) => {
             // var usersdata = [...users];
             users.forEach((cust) => {
                 cust.products.push(product);
+                // Here add gmail and whatsapp notifications to be sent to all users
+                client.messages.create({
+                        from: 'whatsapp:+14155238886',
+                        body: 'Hello ' +  ' \n\nDonator' + req.body.sellermail + 'added a new Item in the website'
+                    })
+                    .then((message) => console.log(message));
+                //   })
                 cust.save((err) => {
                     if(err) { return res.status(500).send({ msg: err.message }) }
                 })
@@ -1022,79 +1029,15 @@ router.post('/sellerreset/:token', function (req, res) {
     });
 })
 
-//Logout
-// router.post('/logout', (req, res) => {
-    // res.locals.loggers = {
-    //     customername: '',
-    //     customermail: '',
-    //     customerid: '',
-    //     sellername: '',
-    //     sellermail: '',
-    //     sellerid: ''
-    // };
-    //         customername = '';
-    //         customermail = '';
-    //         sellername = '';
-    //         sellermail = '';
-    //  var details = {
-    //     customername : customername,
-    //     customermail : customermail,
-    //     sellername : sellername,
-    //     sellermail : sellermail
-    //  }
-    // console.log(res.locals.loggers);
-//     res.send({details: details});
-// });
-
-//SellerLogout
-// router.post('/sellerlogout', (req, res) => {
-//     res.locals.loggers = {
-//         customername: '',
-//         customermail: '',
-//         customerid: '',
-//         sellername: '',
-//         sellermail: '',
-//         sellerid: ''
-//     };
-//             customername = '';
-//             customermail = '';
-//             sellername = '';
-//             sellermail = '';
-//     console.log(res.locals.loggers);
-//     res.json({loggers: res.locals.loggers});
-// });
-
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
 
-// function customerloggedIn() {
-//     if(customername == '') {
-//         res.redirect('https://localhost:3000');
-//     }
-// }
-
-// function sellerloggedIn() {
-//     if(sellername == '') {
-//         res.redirect('https://localhost:3000');
-//     }
-// }
-
 router.get('/logindetails', (req, res) => {
-    // console.log(req);
-    // console.log(req.query.mail);
-    // var details = {
-    //     customername: customername,
-    //     customermail: customermail,
-    //     sellername: sellername,
-    //     sellermail: sellermail
-    // }
     Customer.find({}, (err, customers) => {
-    // Sellers.find({}, (err, sellers) => {
     res.send ({customers: customers});
 })
 })
-// })
 
 router.get('/sellerlogindetails', (req, res) => {
     Sellers.find({}, (err, sellers) => {
