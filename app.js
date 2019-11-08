@@ -143,6 +143,7 @@ router.get('/place', (req, res) => {
     console.log(req);
     var noMatch = null;
     if(req.query.search) {
+        // matches any character you typed in the search globally this is regex used
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
         // Client.findOne({email: customermail}, function(err, user) { 
             // console.log('hello');
@@ -196,6 +197,8 @@ router.get('/custorders', (req, res) => {
         res.send({orders: orders});
     })
 })
+
+// Used for giving rating to the donator
 
 router.post('/rating/:id', (req, res) => {
     console.log(req);
@@ -580,11 +583,12 @@ router.post('/custregister', upload.single('file'), function(req, res, next) {
 
         console.log(req.file);
         console.log(req.files);
+    // Uploads files to the online website 
     cloudinary.v2.uploader.upload(req.file.path, function(err, result) {
         if(err) {
             console.log(err);
         }
-        // add cloudinary url for the image to the campground object under image property
+        
         let picture = result.secure_url;
         let pictureId = result.public_id;
 
@@ -614,7 +618,7 @@ router.post('/custregister', upload.single('file'), function(req, res, next) {
                        pass: 'Laasyasrihan'
                    }
                }); 
-              
+              // sends verification link to the user
               var mailOptions = { from: 'rockinsal6@gmail.com', to: client.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttps:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
               transporter.sendMail(mailOptions, function (err) {
                   if (err) { return res.status(500).send({ msg: err.message }); }
@@ -1029,6 +1033,7 @@ router.post('/sellerreset/:token', function (req, res) {
     });
 })
 
+// idi use chei algorithm lo searching ki ani regex use chesam ani pettu
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
